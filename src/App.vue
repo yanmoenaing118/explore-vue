@@ -3,49 +3,32 @@ import Header from "./components/Header.vue";
 import SongsList from "./components/SongsList.vue";
 import AddSongForm from "./components/AddSongForm.vue";
 import SongsFilter from "./components/SongsFilter.vue";
+import Model from "./components/Model.vue";
+import SongDetails from "./components/SongDetails.vue";
 
 
-import { computed, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 
+const sourceUrl = "https://myplaylist.vercel.app/";
 let songId = 0;
 const songs = ref([
   {
     id: songId++,
-    title: "Done for me",
-    poster: "",
-    type: "kr",
+    title: "Pian Pian",
+    poster: sourceUrl + "static/media/elod.852037c1.png",
+    src: sourceUrl + 'static/media/elod.d2eebfc8.mp3',
+    country: "ch",
   },
-  {
-    id: songId++,
-    title: "Me and only you",
-    poster: "",
-    type: "kr",
-  },
-  {
-    id: songId++,
-    title: "Love silk girls",
-    poster: "",
-    type: "jp",
-  },
-  {
-    id: songId++,
-    title: "Like Water",
-    type: "kr",
-  },
-  {
-    id: songId++,
-    title: "Water glass",
-    type: "ch",
-  },
+
 ]);
-
 const filterKey = ref('all');
-
 const filteredSongs = computed(() => {
-  return filterKey.value === "all"  ? songs.value:  songs.value.filter(item => item.type === filterKey.value);
-})
+  return filterKey.value === "all"  ? songs.value:  songs.value.filter(item => item.country === filterKey.value);
+});
+const showDetails = ref(false);
+let details = ref(null)
 
-function onAdded(song) {
+function handleAdded(song) {
   console.log("new song ", song);
   songs.value = [...songs.value, song];
 }
@@ -53,6 +36,13 @@ function onAdded(song) {
 function handleFilter(value) {
   filterKey.value = value;
 }
+
+function handleShowDetails(item) {
+  console.log('details ', item);
+  details.value = item;
+  showDetails.value = true;
+}
+
 </script>
 
 <template>
@@ -60,12 +50,16 @@ function handleFilter(value) {
   <main>
     <div class="wrapper">
       <h2>Add a song</h2>
-      <AddSongForm @added="onAdded" />
-      
+      <AddSongForm @added="handleAdded" />
+      <hr /><br />
       <h3>Your songs</h3>
       <SongsFilter @filtered="handleFilter" />
-      <SongsList :list="filteredSongs" />
+      <SongsList :list="filteredSongs" @show-details="handleShowDetails" />
+      <Model v-if="showDetails" @close="showDetails = !showDetails">
+        <SongDetails />
+      </Model>
     </div>
+
   </main>
 </template>
 

@@ -3,6 +3,7 @@ import { ref } from "@vue/reactivity";
 
 const props = defineProps({
   options: Array,
+  label: String
 });
 const emit = defineEmits(["changed"]);
 
@@ -16,6 +17,7 @@ function handleSelected(e) {
 
 <template>
   <label>
+      {{label}}
     <select @change="handleSelected">
       <option v-for="opt in options" :key="opt" :value="opt.value">
         {{ opt.label }}

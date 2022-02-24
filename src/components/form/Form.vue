@@ -1,15 +1,32 @@
 <script setup>
 import TextInput from "./TextInput.vue";
+import Select from "./Selector.vue";
 import {  reactive, ref } from "vue";
 
 const props = defineProps({
   inputs: Array,
 });
 
+const options = [
+  {
+    label: "Korean",
+    value: "kr",
+  },
+  {
+    label: "Japanese",
+    value: "jp",
+  },
+  {
+    label: "Chinese",
+    value: "ch",
+  },
+];
+
 const formData = ref({
     title: "",
     poster: "",
-    src: ""
+    src: "",
+    country: ""
 })
 
 const emit = defineEmits(['submit'])
@@ -23,6 +40,8 @@ function handleSubmit() {
     emit('submit', formData.value)
 }
 
+
+
 </script>
 
 
@@ -32,7 +51,7 @@ function handleSubmit() {
       <div v-for="(input) in inputs" :key="input.id"> 
         <TextInput :label="input.label" :value="input.value" @change="(value) => onChange(input.key, value)" />
       </div>
-
+      <div><Select :options="options" @changed="(value) => onChange('country', value)" label="Choose country"/></div>
       <button type="submit" @click.prevent="handleSubmit">Submit</button>
     </form>
   </section>

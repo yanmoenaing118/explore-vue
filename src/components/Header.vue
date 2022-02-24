@@ -17,11 +17,13 @@ header {
 
 h1 {
     text-transform: uppercase;
-    font-weight: normal;
+    font-weight: 300;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
 }
 .header {
     width: 100%;
-    height: 70px;
+    height: 50px;
     display: flex;
     align-items: center;
 

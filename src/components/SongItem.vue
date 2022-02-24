@@ -2,11 +2,14 @@
 const props = defineProps({
   item: Object,
 });
+
+const emit = defineEmits(["show-details"]);
+
 </script>
 
 
 <template>
-  <li>{{ item.title }}</li>
+  <li @click="emit('show-details')">{{ item.title }}</li>
 </template>
 
 
