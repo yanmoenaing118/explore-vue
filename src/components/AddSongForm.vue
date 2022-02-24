@@ -4,17 +4,17 @@ import Form from "./form/Form.vue";
 
 const inputs = ref([
   {
-    label: "Song title",
+    label: "Title",
     id: 1,
     key: "title",
   },
   {
-    label: "Song Poster",
+    label: "Poster",
     id: 2,
     key: "poster"
   },
   {
-    label: "Song src",
+    label: "Src",
     id: 3,
     key: "src"
   },

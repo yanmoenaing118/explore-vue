@@ -2,8 +2,10 @@
 import Header from "./components/Header.vue";
 import SongsList from "./components/SongsList.vue";
 import AddSongForm from "./components/AddSongForm.vue";
+import SongsFilter from "./components/SongsFilter.vue";
 
-import { ref } from "vue";
+
+import { computed, ref } from "vue";
 
 let songId = 0;
 const songs = ref([
@@ -28,13 +30,28 @@ const songs = ref([
   {
     id: songId++,
     title: "Like Water",
-    poster: "",
+    type: "kr",
+  },
+  {
+    id: songId++,
+    title: "Water glass",
+    type: "ch",
   },
 ]);
+
+const filterKey = ref('all');
+
+const filteredSongs = computed(() => {
+  return filterKey.value === "all"  ? songs.value:  songs.value.filter(item => item.type === filterKey.value);
+})
 
 function onAdded(song) {
   console.log("new song ", song);
   songs.value = [...songs.value, song];
+}
+
+function handleFilter(value) {
+  filterKey.value = value;
 }
 </script>
 
@@ -44,8 +61,10 @@ function onAdded(song) {
     <div class="wrapper">
       <h2>Add a song</h2>
       <AddSongForm @added="onAdded" />
+      
       <h3>Your songs</h3>
-      <SongsList :list="songs" />
+      <SongsFilter @filtered="handleFilter" />
+      <SongsList :list="filteredSongs" />
     </div>
   </main>
 </template>
