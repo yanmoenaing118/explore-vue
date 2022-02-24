@@ -29,8 +29,8 @@ function handleClose() {
 }
 
 .model-content {
-    width: 60%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 680px;
     margin: 0 auto;
     position: absolute;
     top: 50%;

@@ -26,7 +26,9 @@ const formData = ref({
     title: "",
     poster: "",
     src: "",
-    country: ""
+    subtitle: "",
+    country: "",
+    
 })
 
 const emit = defineEmits(['submit'])

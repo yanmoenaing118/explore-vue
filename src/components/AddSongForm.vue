@@ -18,6 +18,11 @@ const inputs = ref([
     id: 3,
     key: "src"
   },
+  {
+    label: "Subtitle",
+    id: 4,
+    key: "subtitle"
+  }
 ]);
 
 

@@ -17,6 +17,7 @@ const songs = ref([
     title: "Pian Pian",
     poster: sourceUrl + "static/media/elod.852037c1.png",
     src: sourceUrl + 'static/media/elod.d2eebfc8.mp3',
+    subtitle: sourceUrl + "static/media/elod.defe39dc.vtt",
     country: "ch",
   },
 
@@ -30,7 +31,7 @@ let details = ref(null)
 
 function handleAdded(song) {
   console.log("new song ", song);
-  songs.value = [...songs.value, song];
+  songs.value = [...songs.value, {...song, poster: sourceUrl + song.poster, src: sourceUrl + song.src, subtitle: sourceUrl + song.subtitle}];
 }
 
 function handleFilter(value) {
@@ -56,7 +57,7 @@ function handleShowDetails(item) {
       <SongsFilter @filtered="handleFilter" />
       <SongsList :list="filteredSongs" @show-details="handleShowDetails" />
       <Model v-if="showDetails" @close="showDetails = !showDetails">
-        <SongDetails />
+        <SongDetails :item="details"/>
       </Model>
     </div>
 
