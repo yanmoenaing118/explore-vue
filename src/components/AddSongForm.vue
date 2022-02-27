@@ -27,15 +27,18 @@ const inputs = [
 ];
 
 const songsStore = useSongsStore();
+const loading = ref(false);
 
-function handleSubmit(value) {
-  songsStore.addSong(value);
+async function handleSubmit(value) {
+  loading.value = true;
+  await songsStore.addSong(value);
+  loading.value = false;
 }
 </script>
 
 <template>
   <div>
-    <Form :inputs="inputs" @submit="handleSubmit" />
+    <Form :inputs="inputs" @submit="handleSubmit" :loading="loading" />
   </div>
 </template>
 

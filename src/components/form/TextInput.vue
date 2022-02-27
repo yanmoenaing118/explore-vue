@@ -2,6 +2,7 @@
 import { ref } from "vue";
 const props = defineProps({
   label: String,
+  is_valid: String
 });
 
 const text = ref("");
@@ -14,7 +15,7 @@ function onChange(e) {
 
 <template>
   <label>
-    <span>{{ label }} {{ text }}</span>
+    <span>{{ label }} {{ is_valid }}</span>
     <input type="text" @input="onChange" />
   </label>
 </template>
@@ -24,7 +25,8 @@ function onChange(e) {
 input {
   display: block;
   width: 100%;
-  padding: var(--space-2);
+  padding: var(--space-4) var(--space-2);
+
 }
 
 span {

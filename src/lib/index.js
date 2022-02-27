@@ -11,7 +11,6 @@ export const createSubtitle = async (text) => {
   const result = await converVttToJson(text);
   let x = 0;
   for (let i = 0; i < result.length; i++) {
-    //cover for bug in vtt to json here
     if (result[i].part && result[i].part.trim() !== "") {
       syncData[x] = result[i];
       x++;
@@ -19,4 +18,17 @@ export const createSubtitle = async (text) => {
   }
 
   return syncData;
+};
+
+export const fakeApiCallDelay = (delay) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, delay);
+  });
+};
+
+export const getFileExtension = (value) => {
+  const arr = value.split(".");
+  if(arr.length <= 1) return ""; 
+  const ext = arr[arr.length - 1];
+  return ext;
 };

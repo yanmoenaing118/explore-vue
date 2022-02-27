@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { fakeApiCallDelay } from "../lib";
 
 const sourceUrl = "https://myplaylist.vercel.app/";
 let songId = 0;
@@ -28,7 +29,8 @@ export const useSongsStore = defineStore("songs", {
   },
 
   actions: {
-    addSong(song) {
+    async addSong(song) {
+      await fakeApiCallDelay(1000);
       this.songs.push({
         ...song,
         poster: sourceUrl + song.poster,
