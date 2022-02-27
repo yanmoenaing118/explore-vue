@@ -10,10 +10,18 @@ export const useSongsStore = defineStore("songs", {
       songs: [
         {
           id: songId++,
-          title: "Pian Pian",
-          poster: sourceUrl + "static/media/elod.852037c1.png",
-          src: sourceUrl + "static/media/elod.d2eebfc8.mp3",
-          subtitle: sourceUrl + "static/media/elod.defe39dc.vtt",
+          title: "Done for me",
+          poster: sourceUrl + "static/media/hotel_deluna.5d28b181.jpg",
+          src: sourceUrl + "static/media/done_for_me.2b93e9d0.mp3",
+          subtitle: sourceUrl + "static/media/done_for_me.2d83e900.vtt",
+          country: "kr",
+        },
+        {
+          id: songId++,
+          title: "General's Lady",
+          poster: sourceUrl + "static/media/general_lady.b2cdd923.png",
+          src: sourceUrl + "static/media/for_one_person.20cab8c7.mp3",
+          subtitle: sourceUrl + "static/media/for_one_person.5ecb8399.vtt",
           country: "ch",
         },
       ],

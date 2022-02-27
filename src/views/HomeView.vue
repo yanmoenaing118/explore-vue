@@ -31,20 +31,47 @@ function handleShowDetails(item) {
 <template>
   <Header />
   <main>
-    <div class="wrapper">
-      <h2>Add a song</h2>
+    <div class="wrapper home">
+      <div>
+              <h2>Add a song</h2>
       <AddSongForm />
-      <hr />
-      <br />
-      <h3>Your songs</h3>
-      <SongsFilter @filtered="handleFilter" />
+  
+
+      </div>
+      <div>
+        <h2>Your songs | {{songsStore.filteredSongs.length}}</h2>
+        <SongsFilter @filtered="handleFilter" />
       <SongsList
         :list="songsStore.filteredSongs"
         @show-details="handleShowDetails"
       />
+      </div>
       <Model v-if="showDetails" @close="showDetails = !showDetails">
         <SongDetails :item="details" />
       </Model>
     </div>
   </main>
 </template>
+
+<style scoped>
+h2 {
+  color: var(--primary);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.home {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.home > div {
+  flex: 1;
+}
+
+@media screen and (max-width: 680px) {
+  .home {
+    display: block;
+  }
+}
+</style>

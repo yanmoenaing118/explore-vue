@@ -25,7 +25,12 @@ function onChange(e) {
 input {
   display: block;
   width: 100%;
-  padding: var(--space-4) var(--space-2);
+  padding: var(--space-5) var(--space-3);
+  border: 1px solid var(--gray-400);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--secondary);
 
 }
 

@@ -127,7 +127,7 @@ function checkValidVTTFile(value) {
           label="Choose country"
         />
       </div>
-      <button type="submit" @click.prevent="handleSubmit" :disabled="disabled">
+      <button type="submit" @click.prevent="handleSubmit" :disabled="disabled || loading">
         {{ loading ? "Loading" : "Submit" }}
       </button>
     </form>
@@ -144,12 +144,15 @@ button {
   margin-top: var(--space-7);
   border: none;
   background: none;
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-3) var(--space-8);
   border: 1px solid var(--gray-300);
   cursor: pointer;
   background-color: var(--primary);
   color: #fff;
   transition: all 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px 1px rgba(0,0,0,0.1);
+
 }
 
 button:disabled {

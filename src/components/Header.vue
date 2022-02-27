@@ -20,10 +20,12 @@ h1 {
     font-weight: 300;
     font-size: 1.6rem;
     letter-spacing: 3px;
+    font-family: var(--logo-font);
+    color: var(--primary);
 }
 .header {
     width: 100%;
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
 

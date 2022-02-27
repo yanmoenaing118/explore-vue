@@ -10,5 +10,6 @@ const props = defineProps({
     :src="src"
     controls
     preload="metadata"
+    autoplay
   ></audio>
 </template>

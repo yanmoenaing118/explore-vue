@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
 :root {
   --primary: green;
   --secondary: teal;
@@ -8,7 +12,7 @@
   --gray-400: #949494;
   --gray-500: #808080;
 
-  --max-width: 680px;
+  --max-width: 980px;
   
   --space-1: 2px;
   --space-2: 4px;
@@ -19,6 +23,8 @@
   --space-7: 20px;
   --space-8: 24px;
   
+
+  --logo-font:'Lobster', cursive;    
 
 }
 

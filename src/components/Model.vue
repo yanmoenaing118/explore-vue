@@ -1,15 +1,17 @@
 <script setup>
-import { onMounted } from "@vue/runtime-core";
+import { onMounted, onUnmounted } from "@vue/runtime-core";
 
 const emit = defineEmits(["close"]);
 
 onMounted(() => {
   window.addEventListener("keydown", handleEscape)  
-  return () => window.removeEventListener("keydown", handleEscape);
 })
 
+onUnmounted(() => window.removeEventListener("keydown", handleEscape));
+
 function handleEscape(e) {
-  return (e.key === "Escape" && !e.repeat) ? handleClose() : "";
+  console.log(e.key);
+  return e.keyCode === 27 ? handleClose() : "";
 }
 
 
