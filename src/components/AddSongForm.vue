@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from "@vue/reactivity";
 import Form from "./form/Form.vue";
+import { useSongsStore } from "./../stores";
 
-const inputs = ref([
+const inputs = [
   {
     label: "Title",
     id: 1,
@@ -11,35 +12,30 @@ const inputs = ref([
   {
     label: "Poster",
     id: 2,
-    key: "poster"
+    key: "poster",
   },
   {
     label: "Src",
     id: 3,
-    key: "src"
+    key: "src",
   },
   {
     label: "Subtitle",
     id: 4,
-    key: "subtitle"
-  }
-]);
+    key: "subtitle",
+  },
+];
 
-
-
-const emit = defineEmits(['added']);
+const songsStore = useSongsStore();
 
 function handleSubmit(value) {
-    emit('added', value);
+  songsStore.addSong(value);
 }
-
-
-
 </script>
 
 <template>
   <div>
-    <Form :inputs="inputs" @submit="handleSubmit"/>
+    <Form :inputs="inputs" @submit="handleSubmit" />
   </div>
 </template>
 

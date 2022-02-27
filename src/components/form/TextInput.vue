@@ -1,42 +1,34 @@
 <script setup>
 import { ref } from "vue";
 const props = defineProps({
-    label: String
-})
+  label: String,
+});
 
-
-
-const text = ref("")
-
-const emit = defineEmits(['change'])
+const text = ref("");
+const emit = defineEmits(["change"]);
 
 function onChange(e) {
-    text.value = e.target.value;
-    emit('change', text.value);
-    
+  emit("change", e.target.value);
 }
-
-
 </script>
 
 <template>
-    <label>
-        <span>{{label}} {{text}}</span>
-        <input type="text" :value="text" @input="onChange">
-    </label>
+  <label>
+    <span>{{ label }} {{ text }}</span>
+    <input type="text" @input="onChange" />
+  </label>
 </template>
 
 
 <style scoped>
 input {
-    display: block;
-    width: 100%;
-    padding: var(--space-2);
-
+  display: block;
+  width: 100%;
+  padding: var(--space-2);
 }
 
 span {
-    display: block;
+  display: block;
 }
 </style>
 

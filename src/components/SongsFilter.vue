@@ -1,5 +1,6 @@
 <script setup>
 import Select from "./form/Selector.vue";
+import { useSongsStore } from "../stores";
 
 const options = [
     {
@@ -19,10 +20,11 @@ const options = [
     value: "ch",
   },
 ];
+const songsStore = useSongsStore();
 
 const emit = defineEmits(["filtered"])
 function handleChange(value) {
-    emit("filtered", value);
+    songsStore.setFilteredKey(value);
 }
 </script>
 
